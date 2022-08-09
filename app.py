@@ -44,7 +44,7 @@ def test():
 def about():
     return "Ini Halaman about"
 
-@app.route("/price")
+@app.route("/")
 def car_price_predict():
     args = request.args
     levy            = args.get("Levy", type=int, default=655)
