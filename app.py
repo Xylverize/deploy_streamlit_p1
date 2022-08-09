@@ -44,32 +44,31 @@ def test():
 def about():
     return "Ini Halaman about"
 
-@app.route("/")
+@app.route("/price")
 def car_price_predict():
     args = request.args
-    levy            = args.get("Levy", type=int, default=0)
-    manufacturer    = args.get("Manufacturer", type=str, default=0)
-    model           = args.get("Model", type=str, default=0)
-    prod            = args.get("Prod. year", type=int, default=0)
-    category        = args.get("Category", type=str, default=0)
-    leather         = args.get("Leather interior", type=str, default=0)
-    fuel            = args.get("Fuel type", type=float, default=0)
-    engine          = args.get("Engine volume", type=float, default=0)
-    mileage         = args.get("Mileage", type=int, default=0)
-    cylinders       = args.get("Cylinders", type=int, default=0)
-    gearbox         = args.get("Gear box type", type=int, default=0)
-    drive           = args.get("Drive wheels", type=str, default=0)
-    doors           = args.get("Doors", type=str, default=0)
-    wheel           = args.get("Wheel", type=str, default=0)
-    color           = args.get("Color", type=str, default=0)
-    airbags         = args.get("Airbags", type=int, default=0)
+    levy            = args.get("Levy", type=int, default=655)
+    manufacturer    = args.get("Manufacturer", type=str, default="HYUNDAI")
+    model           = args.get("Model", type=str, default='Elantra')
+    prod            = args.get("Prod. year", type=int, default=2015)
+    category        = args.get("Category", type=str, default='Sedan')
+    leather         = args.get("Leather interior", type=str, default='Yes')
+    fuel            = args.get("Fuel type", type=str, default='Diesel')
+    engine          = args.get("Engine volume", type=float, default=1.6)
+    mileage         = args.get("Mileage", type=int, default=52313)
+    cylinders       = args.get("Cylinders", type=float, default=4.0)
+    gearbox         = args.get("Gear box type", type=int, default='Automatic')
+    drive           = args.get("Drive wheels", type=str, default='Front')
+    doors           = args.get("Doors", type=str, default='4-5')
+    wheel           = args.get("Wheel", type=str, default='Left wheel')
+    color           = args.get("Color", type=str, default='White')
+    airbags         = args.get("Airbags", type=int, default=4)
     new_data        = [levy,manufacturer,model,prod,category,leather,fuel,engine,
                         mileage,cylinders,gearbox,drive,doors,wheel,color,airbags]
 
     price = car_price_inference(new_data)
     response = jsonify(result=str(price))
     return response
-
 
 
 # test kode di local
